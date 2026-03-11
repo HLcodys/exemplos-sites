@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Clean | Limpeza Residencial Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0F172A;      /* Azul Marinho Profissional */
+            --secondary: #10B981;    /* Verde Esmeralda (Conversão) */
+            --accent: #38BDF8;       /* Azul Céu (Destaques) */
+            --bg-light: #F8FAFC;     /* Fundo Suave */
+            --text-main: #1E293B;    /* Texto Escuro */
+            --text-muted: #64748B;   /* Texto Secundário */
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body { background-color: white; color: var(--text-main); line-height: 1.6; }
+
+        /* --- NAVEGAÇÃO --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 8%; background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0;
+            z-index: 1000; border-bottom: 1px solid #edf2f7;
+        }
+
+        .logo { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--primary); letter-spacing: -1px; text-decoration: none; }
+        .logo span { color: var(--secondary); }
+
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--secondary); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 160px 8% 100px;
+            display: flex; align-items: center; gap: 50px;
+            background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+            min-height: 90vh;
+        }
+
+        .hero-content { flex: 1; }
+        .hero-tag { background: #E2E8F0; color: var(--primary); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; margin-bottom: 20px; display: inline-block; }
+        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 25px; color: var(--primary); }
+        .hero h1 span { color: var(--secondary); }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 35px; max-width: 550px; }
+
+        .btn-wa {
+            background-color: var(--secondary); color: white;
+            padding: 18px 35px; border-radius: 12px; text-decoration: none;
+            font-weight: 700; display: inline-flex; align-items: center; gap: 10px;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2); transition: 0.3s;
+        }
+        .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3); }
+
+        .hero-image { flex: 1; position: relative; }
+        .hero-image img { width: 100%; border-radius: 30px; box-shadow: 20px 20px 60px rgba(0,0,0,0.1); object-fit: cover; }
+
+        /* --- BENEFÍCIOS --- */
+        .benefits { padding: 100px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .benefit-card { padding: 40px; background: var(--bg-light); border-radius: 20px; transition: 0.3s; border: 1px solid transparent; }
+        .benefit-card:hover { border-color: var(--accent); background: white; transform: translateY(-5px); }
+        .benefit-card i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 20px; }
+        .benefit-card h3 { margin-bottom: 15px; font-size: 1.3rem; font-family: 'Montserrat', sans-serif; }
+        .benefit-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* --- COMO FUNCIONA --- */
+        .how-it-works { padding: 100px 8%; background-color: var(--primary); color: white; text-align: center; }
+        .section-title { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin-bottom: 60px; }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+        .step { position: relative; }
+        .step-num { font-size: 4rem; font-weight: 800; opacity: 0.1; position: absolute; top: -20px; left: 50%; transform: translateX(-50%); }
+        .step h3 { margin-bottom: 15px; position: relative; font-family: 'Montserrat', sans-serif; }
+        .step p { color: #94a3b8; }
+
+        /* --- DEPOIMENTOS --- */
+        .testimonials { padding: 100px 8%; text-align: center; }
+        .t-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .t-card { padding: 40px; border: 1px solid #edf2f7; border-radius: 20px; text-align: left; transition: 0.3s; }
+        .t-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .t-card p { font-style: italic; color: var(--text-muted); margin-bottom: 20px; }
+        .t-author { display: flex; align-items: center; gap: 15px; }
+        .t-author img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+
+        /* --- SOBRE --- */
+        .about { padding: 100px 8%; display: flex; align-items: center; gap: 80px; background: var(--bg-light); }
+        .about-text { flex: 1; }
+        .about-image { flex: 1; border-radius: 20px; overflow: hidden; height: 400px; box-shadow: 10px 10px 30px rgba(0,0,0,0.05); }
+        .about-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- CTA FINAL --- */
+        .cta-final { padding: 100px 8%; text-align: center; background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6958?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; color: white; }
+        .cta-final h2 { font-family: 'Montserrat', sans-serif; font-size: 3rem; margin-bottom: 20px; }
+
+        /* --- FOOTER --- */
+        footer { padding: 80px 8% 40px; border-top: 1px solid #edf2f7; background: #fff; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; }
+        .footer-col h4 { margin-bottom: 20px; font-family: 'Montserrat', sans-serif; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li a { text-decoration: none; color: var(--text-muted); line-height: 2; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--secondary); }
+        .socials { display: flex; gap: 15px; font-size: 1.5rem; margin-top: 20px; color: var(--text-muted); }
+        .socials i:hover { color: var(--secondary); cursor: pointer; }
+
+        /* WHATSAPP FLOAT */
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--secondary); width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 2rem; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4); z-index: 2000; text-decoration: none; transition: 0.3s; }
+        .wa-float:hover { transform: scale(1.1); }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 120px; }
+            .nav-links, .about-image { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .about { padding: 60px 8%; }
+            .cta-final h2 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">PRIME<span>CLEAN</span></a>
+        <ul class="nav-links">
+            <li><a href="#beneficios">Benefícios</a></li>
+            <li><a href="#como-funciona">Como Funciona</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+        </ul>
+        <a href="https://wa.me/5511999999999" class="btn-wa" style="padding: 10px 20px; font-size: 0.85rem; border-radius: 8px;">Agendar Agora</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">SERVIÇO 5 ESTRELAS</span>
+            <h1>Seu lar impecável, <span>sem esforço.</span></h1>
+            <p>Limpeza residencial de alto padrão com profissionais rigorosamente selecionados. Qualidade premium para quem não abre mão do conforto.</p>
+            <a href="https://wa.me/5511999999999" class="btn-wa" target="_blank">
+                <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+            </a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Interior de uma casa limpa e luxuosa">
+        </div>
+    </header>
+
+    <section id="beneficios" class="benefits">
+        <div class="benefit-card">
+            <i class="fas fa-bolt"></i>
+            <h3>Atendimento Rápido</h3>
+            <p>Orçamentos em menos de 15 minutos via WhatsApp. Agilidade total para sua rotina.</p>
+        </div>
+        <div class="benefit-card">
+            <i class="fas fa-shield-check"></i>
+            <h3>Profissionais Qualificados</h3>
+            <p>Equipe treinada, verificada e uniformizada. Segurança máxima para sua família.</p>
+        </div>
+        <div class="benefit-card">
+            <i class="fas fa-star"></i>
+            <h3>Garantia Prime</h3>
+            <p>Não ficou satisfeito? Refazemos o serviço em 24h sem custo adicional.</p>
+        </div>
+        <div class="benefit-card">
+            <i class="fas fa-tags"></i>
+            <h3>Preço Justo</h3>
+            <p>Tabelas transparentes e pacotes recorrentes com descontos exclusivos.</p>
+        </div>
+    </section>
+
+    <section id="como-funciona" class="how-it-works">
+        <h2 class="section-title">Como Funciona</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">01</div>
+                <h3>Chame no WhatsApp</h3>
+                <p>Clique no botão e envie uma mensagem com o tamanho do seu imóvel.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">02</div>
+                <h3>Escolha o Horário</h3>
+                <p>Nossa equipe confirma a disponibilidade e agenda conforme sua necessidade.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">03</div>
+                <h3>Aproveite seu Lar</h3>
+                <p>Nossos profissionais cuidam de tudo enquanto você relaxa.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="about">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Detalhe de limpeza profissional">
+        </div>
+        <div class="about-text">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Sobre a Prime Clean</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Fundada com o objetivo de redefinir o conceito de limpeza doméstica no Brasil, a Prime Clean une tecnologia e hospitalidade. Não entregamos apenas limpeza, entregamos tempo livre e bem-estar para nossos clientes.</p>
+            <p style="color: var(--text-muted);">Nossa missão é manter a excelência em cada detalhe, do atendimento inicial ao brilho final em cada superfície.</p>
+        </div>
+    </section>
+
+    <section id="depoimentos" class="testimonials">
+        <h2 class="section-title">O que dizem nossos clientes</h2>
+        <div class="t-grid">
+            <div class="t-card">
+                <p>"Nunca vi minha casa tão limpa. Os profissionais são extremamente educados e pontuais. O agendamento pelo WhatsApp é muito prático!"</p>
+                <div class="t-author">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Ana Silva">
+                    <div>
+                        <strong>Ana Silva</strong><br><small>Empresária</small>
+                    </div>
+                </div>
+            </div>
+            <div class="t-card">
+                <p>"Serviço impecável. O cuidado com os móveis e os detalhes me surpreendeu. Finalmente achei uma empresa de confiança."</p>
+                <div class="t-author">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Carlos Mendes">
+                    <div>
+                        <strong>Carlos Mendes</strong><br><small>Advogado</small>
+                    </div>
+                </div>
+            </div>
+            <div class="t-card">
+                <p>"Uso o serviço semanalmente e não troco por nada. O custo-benefício é excelente pela qualidade entregue."</p>
+                <div class="t-author">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80" alt="Mariana Oliveira">
+                    <div>
+                        <strong>Mariana Oliveira</strong><br><small>Arquiteta</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <h2>Pronto para ver sua casa brilhando?</h2>
+        <p style="margin-bottom: 40px; font-size: 1.2rem; opacity: 0.9;">Clique agora e receba um orçamento personalizado em segundos.</p>
+        <a href="https://wa.me/5511999999999" class="btn-wa" target="_blank">
+            <i class="fab fa-whatsapp"></i> Solicitar Orçamento Agora
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#" class="logo">PRIME<span>CLEAN</span></a>
+                <p style="color: var(--text-muted); margin-top: 15px;">Excelência em serviços residenciais premium.</p>
+                <div class="socials">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-linkedin"></i>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#beneficios">Serviços</a></li>
+                    <li><a href="#como-funciona">Agendamento</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <p style="color: var(--text-muted); line-height: 2;">
+                    contato@primeclean.com.br<br>
+                    (11) 99999-9999<br>
+                    Av. Paulista, 1000 - SP
+                </p>
+            </div>
+        </div>
+        <div style="text-align: center; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid #edf2f7; padding-top: 30px;">
+            &copy; 2026 Prime Clean & Care - Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511999999999" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>

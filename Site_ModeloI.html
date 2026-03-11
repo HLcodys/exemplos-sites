@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grão Prime | Cafés Especiais & Torrefação</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #3d2b1f; /* Marrom Café */
+            --accent: #c0a080;  /* Bege Creme */
+            --light: #fdfaf7;
+            --dark: #1a1a1a;
+            --whatsapp: #25d366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        /* --- NAVEGAÇÃO --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        /* --- HERO / BANNER --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; }
+
+        /* --- SOBRE A EMPRESA --- */
+        .about {
+            padding: 100px 10%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-content { flex: 1; }
+        .about-image {
+            flex: 1;
+            height: 400px;
+            background: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            border-radius: 15px;
+        }
+
+        /* --- PRODUTOS (CATÁLOGO) --- */
+        .products {
+            padding: 80px 10%;
+            background: #f4eee8;
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .product-card:hover { transform: translateY(-10px); }
+
+        .product-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info { padding: 25px; }
+
+        /* --- FORMULÁRIO & CONTATO --- */
+        .contact {
+            padding: 100px 10%;
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-form {
+            flex: 2;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .btn-send {
+            background: var(--primary);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .contact-info { flex: 1; }
+
+        /* --- MAPA --- */
+        .map {
+            width: 100%;
+            height: 400px;
+            background: #eee;
+            margin-top: 50px;
+        }
+
+        /* --- WHATSAPP FLOATING --- */
+        .wa-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: var(--whatsapp);
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 50px 10%;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .about, .contact { flex-direction: column; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">GRÃO PRIME</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#empresa">Empresa</a></li>
+            <li><a href="#produtos">Produtos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>Sabor que Inspira</h1>
+        <p>A melhor experiência em grãos selecionados do Brasil.</p>
+        <a href="https://wa.me/5511999999999" class="btn-send" style="text-decoration: none;">Falar no WhatsApp</a>
+    </section>
+
+    <section id="empresa" class="about">
+        <div class="about-image"></div>
+        <div class="about-content">
+            <h2>Nossa História</h2>
+            <br>
+            <p>Com mais de 20 anos de tradição, a Grão Prime se dedica a encontrar os produtores mais apaixonados para levar até você um café com notas sensoriais inigualáveis. Nosso processo de torrefação artesanal garante que cada xícara conte uma história única.</p>
+        </div>
+    </section>
+
+    <section id="produtos" class="products">
+        <h2>Nossos Produtos</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=400&q=80');"></div>
+                <div class="product-info">
+                    <h3>Blend Intenso</h3>
+                    <p>Notas de chocolate amargo e avelã. Ideal para o seu espresso matinal.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1580915411954-282cb1b0d780?auto=format&fit=crop&w=400&q=80');"></div>
+                <div class="product-info">
+                    <h3>Suave Montanhês</h3>
+                    <p>Corpo leve com toques cítricos e aroma floral persistente.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=80');"></div>
+                <div class="product-info">
+                    <h3>Edição Limitada</h3>
+                    <p>Grãos raros de colheita tardia para os paladares mais exigentes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contact">
+        <div class="contact-form">
+            <h2>Envie uma Mensagem</h2>
+            <br>
+            <form>
+                <input type="text" placeholder="Seu Nome" required>
+                <input type="email" placeholder="Seu E-mail" required>
+                <textarea rows="5" placeholder="Como podemos ajudar?"></textarea>
+                <button type="submit" class="btn-send">Enviar Agora</button>
+            </form>
+        </div>
+        <div class="contact-info">
+            <h2>Fale Conosco</h2>
+            <br>
+            <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+            <p><i class="fas fa-envelope"></i> contato@graoprime.com.br</p>
+            <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo, SP</p>
+            <br>
+            <h3>Siga-nos</h3>
+            <div style="font-size: 1.5rem; gap: 15px; display: flex; margin-top: 10px;">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-linkedin"></i>
+            </div>
+        </div>
+    </section>
+
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0658301183376!2d-46.6559546!3d-23.5625624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da173201%3A0x98729570c99f0e39!2sAv.%20Paulista%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1646250000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Grão Prime Roasters. Todos os direitos reservados.</p>
+    </section>
+
+    <a href="https://wa.me/5511999999999" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
