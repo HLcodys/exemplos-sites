@@ -1,33 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
+
 <head>
-<title>Portfólio de Sites</title>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portfólio de Sites</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+text-align:center;
+padding:60px 20px;
+}
+
+h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+p{
+color:#cbd5f5;
+margin-bottom:40px;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+max-width:1100px;
+margin:auto;
+}
+
+.card{
+background:#1e293b;
+border-radius:12px;
+padding:30px 20px;
+transition:0.3s;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 35px rgba(0,0,0,0.5);
+}
+
+.card h2{
+margin-bottom:10px;
+font-size:22px;
+}
+
+.card p{
+font-size:14px;
+margin-bottom:20px;
+color:#94a3b8;
+}
+
+.btn{
+display:inline-block;
+padding:10px 18px;
+background:#38bdf8;
+color:#0f172a;
+text-decoration:none;
+border-radius:6px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#0ea5e9;
+}
+
+footer{
+margin-top:60px;
+font-size:13px;
+color:#64748b;
+}
+
+</style>
 </head>
 
-<body style="font-family: Arial; text-align:center; margin-top:60px;">
+<body>
 
-<h1>Modelos de Sites</h1>
-<p>Selecione um modelo para visualizar:</p>
+<h1>Portfólio de Sites</h1>
+<p>Alguns exemplos de layouts de sites desenvolvidos para empresas.</p>
 
-<br>
+<div class="container">
 
-<a href="Site_ModeloI.html">Ver Modelo 1</a>
-<br><br>
+<div class="card">
+<h2>Modelo Empresarial</h2>
+<p>Layout profissional ideal para empresas institucionais.</p>
+<a class="btn" href="Site_ModeloI.html" target="_blank">Visualizar</a>
+</div>
 
-<a href="Site_ModeloII.html">Ver Modelo 2</a>
-<br><br>
+<div class="card">
+<h2>Modelo Serviços</h2>
+<p>Site focado em apresentação de serviços e contato rápido.</p>
+<a class="btn" href="Site_ModeloII.html" target="_blank">Visualizar</a>
+</div>
 
-<a href="Site_ModeloIII.html">Ver Modelo 3</a>
-<br><br>
+<div class="card">
+<h2>Modelo Moderno</h2>
+<p>Design moderno e visual impactante.</p>
+<a class="btn" href="Site_ModeloIII.html" target="_blank">Visualizar</a>
+</div>
 
-<a href="Site_ModeloIV.html">Ver Modelo 4</a>
-<br><br>
+<div class="card">
+<h2>Modelo Corporativo</h2>
+<p>Layout ideal para empresas estruturadas.</p>
+<a class="btn" href="Site_ModeloIV.html" target="_blank">Visualizar</a>
+</div>
 
-<a href="Site_ModeloV.html">Ver Modelo 5</a>
-<br><br>
+<div class="card">
+<h2>Modelo Comercial</h2>
+<p>Estrutura pensada para conversão e geração de clientes.</p>
+<a class="btn" href="Site_ModeloV.html" target="_blank">Visualizar</a>
+</div>
 
-<a href="Site_ModeloVI.html">Ver Modelo 6</a>
+<div class="card">
+<h2>Modelo Premium</h2>
+<p>Design sofisticado para marcas que buscam autoridade.</p>
+<a class="btn" href="Site_ModeloVI.html" target="_blank">Visualizar</a>
+</div>
+
+</div>
+
+<footer>
+© 2026 • Portfólio de Desenvolvimento Web
+</footer>
 
 </body>
 </html>
